@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+
+  # Location of spring cloud config / where to find the config file
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///E:/GigTasker/config-repo
+
+# Server will run on port 8888
+server:
+  port: 8888
