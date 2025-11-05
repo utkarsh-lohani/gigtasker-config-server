@@ -8,6 +8,7 @@ spring:
       server:
         git:
           uri: file:///E:/GigTasker/config-repo
+        default-profile: local
 
 # Server will run on port 8888
 server:
