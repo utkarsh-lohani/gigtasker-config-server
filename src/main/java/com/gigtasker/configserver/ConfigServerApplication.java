@@ -1,4 +1,4 @@
-package com.gigtasker.config_server;
+package com.gigtasker.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
