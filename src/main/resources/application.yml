@@ -1,15 +1,54 @@
+server:
+  port: 8888
+
 spring:
   application:
     name: config-server
 
-  # Location of spring cloud config / where to find the config file
+  # --- THE SWITCH ---
+  profiles:
+    # Change this value to either 'native' or 'git-mode'
+    active: native
+
+---
+# ==========================================
+# MODE 1: NATIVE (Local File System)
+# ==========================================
+spring:
+  config:
+    activate:
+      on-profile: native
+  cloud:
+    config:
+      server:
+        native:
+          # Point this to your local folder
+          search-locations: file:///D:/GigTasker/gigtasker-config
+        # Tell clients (user-service) to use their 'local' config by default
+        default-profile: local
+
+---
+# ==========================================
+# MODE 2: GIT (GitHub Remote)
+# ==========================================
+spring:
+  config:
+    activate:
+      on-profile: git-mode
   cloud:
     config:
       server:
         git:
-          uri: file:///E:/GigTasker/config-repo
-        default-profile: local
+          # Point this to your GitHub repo
+          uri: https://github.com/utkarsh-lohani/gigtasker-config.git
 
-# Server will run on port 8888
-server:
-  port: 8888
+          # If private, inject credentials via Env Vars (don't hardcode!)
+          username: ${CONFIG_REPO_USERNAME:github-username}
+          password: ${CONFIG_REPO_PASSWORD:} # Leave empty if public or using SSH
+
+          # Safety settings
+          ignore-local-ssh-settings: true
+          strict-host-key-checking: false
+
+        # Tell clients to use 'local' config by default (even when pulling from Git)
+        default-profile: local
