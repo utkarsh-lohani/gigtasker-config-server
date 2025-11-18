@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/utkarsh-lohani/gigtasker-config.git
+
+          # We use placeholders so we don't commit secrets to this repo
+          username: ${CONFIG_REPO_USERNAME:utkarsh-lohani}
+          password: ${CONFIG_REPO_PASSWORD:}
+
+          ignore-local-ssh-settings: true
+          strict-host-key-checking: false
+
+        default-profile: local

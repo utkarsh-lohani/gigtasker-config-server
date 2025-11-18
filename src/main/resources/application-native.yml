@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          # Windows path with 3 slashes
+          search-locations: file:///E:/GigTasker/gigtasker-config
+
+        # By default, serve 'local' config to clients
+        default-profile: local
