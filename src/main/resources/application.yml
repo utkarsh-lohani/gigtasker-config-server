@@ -10,3 +10,12 @@ spring:
     # Change this to 'git' to use GitHub.
     # Change this to 'native' to use local files.
     active: native
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  metrics:
+    tags:
+      application: ${spring.application.name}
