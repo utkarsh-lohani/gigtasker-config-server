@@ -19,7 +19,7 @@ When a service (e.g., `user-service`) starts, it calls this server. This server 
 
 ## 🛠️ Tech Stack
 
-* **Spring Boot 3**
+* **Spring Boot 4**
 * **Java 25**
 * **Spring Cloud Config Server**
 * **JGit:** The Java library used to communicate with the Git repository.
